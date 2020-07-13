@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="box" id="heading">
+      <h1> <%=listTitle%></h1>
+    </div>
+
+  <div class="box">
+    <%  newListItem.forEach(function(item){ %>
+      <div class="item">
+        <p>
+            <%= item.name %>
+        </p>
+        <form action="/delete" method="post">
+          <button class="delete" type="submit" value="<%=item._id%>" name="button"><i class="fa fa-trash-o fa-fw"></i></button>
+          <input type="hidden" name="title" value="<%=listTitle%>"></input>
+        </form>
+
+      </div>
+  <%  }) %>
+
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="New item" autocomplete="off">
+    <button class="add" type="submit" name="button" value="<%=listTitle%>">+</button>
+  </form>
+  </div>
+
+<footer>
+  Made By Anchal Goyal
+</footer>
+
+  </body>
+</html>
